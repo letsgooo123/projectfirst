@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지도 - 온라인 도서 클럽</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">온라인 도서 클럽</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="main project.html">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="list2 project.html">도서 리스트</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bookclub4.html">북클럽</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="review9.html">리뷰</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="map5.html">지도</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="join6.html">회원가입</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login7.html">로그인</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div id="map"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p>연락처: example@example.com</p>
+            <p>소셜 미디어 링크</p>
+            <p>저작권 정보 &copy; 2024 온라인 도서 클럽</p>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([37.5665, 126.9780], 13); // 서울을 중심으로 초기화
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // 특정한 여러 장소의 좌표를 설정
+        var places = [
+            { name: "장소 1", location: [37.5625, 126.9750] },
+            { name: "장소 2", location: [37.5670, 126.9807] },
+            { name: "장소 3", location: [37.5708, 126.9870] }
+        ];
+
+        // 각 장소에 마커 추가
+        places.forEach(function(place) {
+            L.marker(place.location).addTo(map)
+                .bindPopup(place.name);
+        });
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

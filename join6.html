@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 - 온라인 도서 클럽</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .signup-form {
+            padding: 50px 0;
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+        }
+        .message {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">온라인 도서 클럽</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="main project.html">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="list2 project.html">도서 리스트</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bookclub4.html">북클럽</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="review9.html">리뷰</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="map5.html">지도</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="join6.html">회원가입</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login7.html">로그인</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container signup-form">
+            <h1 class="text-center">회원가입</h1>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="username">사용자 이름</label>
+                    <input type="text" class="form-control" id="username" placeholder="사용자 이름을 입력하세요">
+                </div>
+                <div class="form-group">
+                    <label for="email">이메일 주소</label>
+                    <input type="email" class="form-control" id="email" placeholder="이메일 주소를 입력하세요">
+                </div>
+                <div class="form-group">
+                    <label for="password">비밀번호</label>
+                    <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력하세요">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">비밀번호 확인</label>
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="비밀번호를 다시 입력하세요">
+                    <p class="message" id="passwordMessage"></p>
+                </div>
+                <button type="submit" class="btn btn-primary" disabled>가입하기</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p>연락처: example@example.com</p>
+            <p>소셜 미디어 링크</p>
+            <p>저작권 정보 &copy; 2024 온라인 도서 클럽</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('password').addEventListener('input', function() {
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+            var message = document.getElementById('passwordMessage');
+            if (password !== confirmPassword && confirmPassword !== '') {
+                message.innerHTML = '비밀번호가 일치하지 않습니다.';
+                message.style.color = 'red';
+                document.querySelector('button[type="submit"]').disabled = true;
+            } else if (password === confirmPassword) {
+                message.innerHTML = '비밀번호가 일치합니다.';
+                message.style.color = 'blue';
+                document.querySelector('button[type="submit"]').disabled = false;
+            } else {
+                message.innerHTML = '';
+                document.querySelector('button[type="submit"]').disabled = true;
+            }
+        });
+
+        document.getElementById('confirmPassword').addEventListener('input', function() {
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+            var message = document.getElementById('passwordMessage');
+            if (password !== confirmPassword) {
+                message.innerHTML = '비밀번호가 일치하지 않습니다.';
+                message.style.color = 'red';
+                document.querySelector('button[type="submit"]').disabled = true;
+            } else {
+                message.innerHTML = '비밀번호가 일치합니다.';
+                message.style.color = 'blue';
+                document.querySelector('button[type="submit"]').disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
